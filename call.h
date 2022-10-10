@@ -12,4 +12,5 @@ typedef struct tab
     int **tableau; // on y sotckera les fichiers map
 };
 
+tab *initTab(int width, int height);
 #endif
