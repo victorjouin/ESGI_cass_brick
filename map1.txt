@@ -1,0 +1,13 @@
+map1                                                                
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+H                                 H
+H                                 H
+H  M     M             M       M  H
+H  M                           M  H
+H               MMM               H
+H               MMM               H
+H  M     M             M       M  H
+H  M                           M  H
+H                                 H
+H                                 H
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH

@@ -2,8 +2,11 @@
 
 typedef struct tab tab;
 
-tab *initTab(int width, int height)
+tab *initTab(int width, int height, char *file)
 {
+    //  open the file
+    FILE *f = fopen(file, "r");
+
     // malloc et initialisation du tableau
 
     tab *tabs = malloc(sizeof(tab));
@@ -17,14 +20,36 @@ tab *initTab(int width, int height)
 
     // remplissage du tableau
 
+    int i = 0;
+    int j = 0;
+    char c;
+
+    while (!feof(f))
+    {
+        c = fgetc(f);
+        if (c == '\n')
+        {
+            i++;
+            j = 0;
+            tabs->tableau[i][j] = '\n';
+        }
+        else
+        {
+            tabs->tableau[i][j] = c;
+        }
+        j++;
+    }
+
+    // affichage du tableau
+
     for (int i = 0; i != tabs->y; i++)
     {
         for (int j = 0; j != tabs->x; j++)
         {
-            tabs->tableau[i][j] = 0;
-            printf("%d ", tabs->tableau[i][j]);
+            printf("%c", tabs->tableau[i][j]);
         }
-        printf("\n");
     }
+
+    fclose(f);
     return tabs;
 }
