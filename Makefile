@@ -1,5 +1,6 @@
 
-SRC =	main.c
+SRC =	main.c \
+		map.c
 
 
 OBJ	=	$(SRC:.c=.o)

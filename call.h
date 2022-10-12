@@ -10,7 +10,8 @@ typedef struct tab
     int y;         // nombre de column
     int x;         // nombre de ligne
     int **tableau; // on y sotckera les fichiers map
-};
+
+} tab;
 
 tab *initTab(int width, int height);
 #endif
