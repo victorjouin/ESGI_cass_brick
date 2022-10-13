@@ -32,7 +32,8 @@ void display(tab *tabs, win *win)
             k++;
         }
     }
-    mvwprintw(win->window, 10, 10, mapping);
+    mapping[k] = '\0';
+    mvwprintw(win->window, 0, 0, mapping);
 }
 
 tab *initTab(int width, int height, char *file)
