@@ -24,4 +24,6 @@ typedef struct win
 
 tab *initTab(int width, int height, char *file);
 void display(tab *tabs, win *win);
+void freeStock(tab *tabs, win *win);
+WINDOW *create_newwin(int height, int width, int start_y, int start_x);
 #endif

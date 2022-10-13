@@ -2,12 +2,27 @@
 
 typedef struct tab tab;
 
+WINDOW *create_newwin(int height, int width, int start_y, int start_x)
+{
+    WINDOW *local_win;
+    local_win = newwin(height, width, start_y, start_x);
+    wrefresh(local_win);
+
+    return local_win;
+}
+
+void freeStock(tab *tabs, win *win)
+{
+    free(win);
+    free(tabs->tableau);
+    free(tabs);
+}
+
 void display(tab *tabs, win *win)
 {
     // affichage du tableau
     int size = ((tabs->x) * (tabs->y));
     char *mapping = malloc(sizeof(char) * ((tabs->x) * (tabs->y)));
-
     int k = 0;
     for (int i = 0; i != tabs->y; i++)
     {

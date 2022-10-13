@@ -8,7 +8,7 @@ OBJ	=	$(SRC:.c=.o)
 
 LDFLAGS= -lncurses
 
-NAME	=	101pong
+NAME	=	play
 
 all: 	$(NAME)
 
