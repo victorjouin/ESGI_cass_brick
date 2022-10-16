@@ -20,6 +20,9 @@ void freeStock(tab *tabs, win *win)
 
 void display(tab *tabs, win *win)
 {
+    // nettoyage
+    wclear(win->window);
+
     // affichage du tableau
     int size = ((tabs->x) * (tabs->y));
     char *mapping = malloc(sizeof(char) * ((tabs->x) * (tabs->y)));

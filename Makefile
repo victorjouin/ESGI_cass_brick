@@ -1,5 +1,6 @@
 
-SRC =	main.c \
+SRC =	main.c		\
+		player.c	\
 		map.c
 
 

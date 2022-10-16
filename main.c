@@ -41,6 +41,21 @@ void main(int *argc, char **argv)
     int height = y + 1;
     tab *tabs = initTab(width, height, argv[1]);
     display(tabs, displays);
+    printf("test");
+
+    // create players
+
+    player1 *p1 = initplayer1(tabs);
+    player1 *p2 = initplayer2(tabs);
+
+    // move
+    int c = wgetch(displays->window);
+    while (c != 'p')
+    {
+        c = wgetch(displays->window);
+        movePlayer2(p2, tabs, displays);
+        movePlayer(p1, tabs, displays);
+    }
     wgetch(displays->window);
     endwin();
     freeStock(tabs, displays);
