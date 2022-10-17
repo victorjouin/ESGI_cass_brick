@@ -50,10 +50,10 @@ tab *initTab(int width, int height, char *file)
     tab *tabs = malloc(sizeof(tab));
     tabs->x = width;
     tabs->y = height;
-    tabs->tableau = malloc(sizeof(int *) * tabs->y);
+    tabs->tableau = malloc(sizeof(char *) * tabs->y);
     for (int i = 0; i != tabs->y; i++)
     {
-        tabs->tableau[i] = malloc(sizeof(int) * tabs->x);
+        tabs->tableau[i] = malloc(sizeof(char) * tabs->x);
     }
 
     // remplissage du tableau

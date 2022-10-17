@@ -42,9 +42,9 @@ player1 *initplayer2(tab *tabs)
 
 void movePlayer(player1 *p1, tab *tabs, win *displays)
 {
-    int c = wgetch(displays->window);
+    int c;
     int turn = 0;
-    while (turn != 5)
+    while (turn != 10)
     {
         c = wgetch(displays->window);
         if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
@@ -82,15 +82,16 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
             display(tabs, displays);
             turn++;
         }
+        display(tabs, displays);
     }
     mvwprintw(displays->window, 0, 0, "joueur 1 ton tour est fini a toi joueur 2 !");
 }
 
 void movePlayer2(player1 *p1, tab *tabs, win *displays)
 {
-    int c = wgetch(displays->window);
+    int c;
     int turn = 0;
-    while (turn != 5)
+    while (turn != 10)
     {
         c = wgetch(displays->window);
         if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')

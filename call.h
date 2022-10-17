@@ -36,6 +36,7 @@ typedef struct win
 
 } win;
 
+char *initMenu(win *displays, char *arg);
 tab *initTab(int width, int height, char *file);
 void display(tab *tabs, win *win);
 void freeStock(tab *tabs, win *win);

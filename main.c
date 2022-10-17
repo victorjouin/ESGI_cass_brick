@@ -7,7 +7,7 @@ typedef struct win win;
 void main(int *argc, char **argv)
 {
     // initialise la fenetre de jeu
-
+    printf("mettez le terminal en prenne écran si vous avez des probleme de segfault au demarrage\n\n");
     initscr();
     curs_set(false);
     refresh();
@@ -16,6 +16,9 @@ void main(int *argc, char **argv)
     displays->w = 70;
     displays->window = create_newwin(displays->h, displays->w, (LINES - displays->h) / 2, (COLS - displays->w) / 2);
     keypad(displays->window, true);
+
+    // gestion menu
+    argv[1] = initMenu(displays, argv[1]);
 
     // calcule pour la map via le fichier
 
@@ -52,7 +55,6 @@ void main(int *argc, char **argv)
     int c = wgetch(displays->window);
     while (c != 'p')
     {
-        c = wgetch(displays->window);
         movePlayer2(p2, tabs, displays);
         movePlayer(p1, tabs, displays);
     }

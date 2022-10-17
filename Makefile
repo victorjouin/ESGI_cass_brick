@@ -1,7 +1,8 @@
 
 SRC =	main.c		\
 		player.c	\
-		map.c
+		map.c		\
+		menu.c
 
 
 OBJ	=	$(SRC:.c=.o)
