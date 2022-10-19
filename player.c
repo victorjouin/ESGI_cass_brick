@@ -55,6 +55,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
             p1->x -= 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
@@ -65,6 +66,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
             p1->y -= 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -75,6 +77,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
             p1->x += 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
@@ -85,11 +88,13 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
             p1->y += 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
         if (c == ' ')
         {
             putBomb(tabs, p1->x, p1->y);
             mvwprintw(displays->window, 0, 0, "bomb");
+            bombChecker(tabs);
         }
         display(tabs, displays);
     }
@@ -111,6 +116,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
             p1->x -= 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
@@ -121,6 +127,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
             p1->y -= 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -131,6 +138,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
             p1->x += 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
 
         if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
@@ -141,11 +149,13 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
             p1->y += 1;
             display(tabs, displays);
             turn++;
+            bombChecker(tabs);
         }
         if (c == ' ')
         {
             putBomb(tabs, p1->x, p1->y);
             mvwprintw(displays->window, 0, 0, "bomb");
+            bombChecker(tabs);
         }
     }
     mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");

@@ -20,6 +20,13 @@ typedef struct game
     int round;
 } game;
 
+typedef struct bomb
+{
+    int x;
+    int y;
+    int count;
+} bomb;
+
 typedef struct tab
 {
     int y;          // nombre de column
@@ -46,5 +53,6 @@ player1 *initplayer2(tab *tabs);
 void movePlayer(player1 *p1, tab *tabs, win *displays);
 void movePlayer2(player1 *p2, tab *tabs, win *displays);
 void putBomb(tab *tabs, int x, int y);
+void bombChecker(tab *tabs);
 
 #endif
