@@ -45,5 +45,6 @@ player1 *initplayer1(tab *tabs);
 player1 *initplayer2(tab *tabs);
 void movePlayer(player1 *p1, tab *tabs, win *displays);
 void movePlayer2(player1 *p2, tab *tabs, win *displays);
+void putBomb(tab *tabs, int x, int y);
 
 #endif

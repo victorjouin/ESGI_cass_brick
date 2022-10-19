@@ -49,7 +49,8 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
         c = wgetch(displays->window);
         if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x) - 1][(p1->y)] = 'P';
             p1->x -= 1;
             display(tabs, displays);
@@ -58,7 +59,8 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
 
         if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x)][(p1->y) - 1] = 'P';
             p1->y -= 1;
             display(tabs, displays);
@@ -67,7 +69,8 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
 
         if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x) + 1][(p1->y)] = 'P';
             p1->x += 1;
             display(tabs, displays);
@@ -76,11 +79,17 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
 
         if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x)][(p1->y) + 1] = 'P';
             p1->y += 1;
             display(tabs, displays);
             turn++;
+        }
+        if (c == ' ')
+        {
+            putBomb(tabs, p1->x, p1->y);
+            mvwprintw(displays->window, 0, 0, "bomb");
         }
         display(tabs, displays);
     }
@@ -96,7 +105,8 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
         c = wgetch(displays->window);
         if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x) - 1][(p1->y)] = 'T';
             p1->x -= 1;
             display(tabs, displays);
@@ -105,7 +115,8 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
 
         if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x)][(p1->y) - 1] = 'T';
             p1->y -= 1;
             display(tabs, displays);
@@ -114,7 +125,8 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
 
         if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x) + 1][(p1->y)] = 'T';
             p1->x += 1;
             display(tabs, displays);
@@ -123,11 +135,17 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
 
         if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
         {
-            tabs->tableau[(p1->x)][(p1->y)] = ' ';
+            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                tabs->tableau[(p1->x)][(p1->y)] = ' ';
             tabs->tableau[(p1->x)][(p1->y) + 1] = 'T';
             p1->y += 1;
             display(tabs, displays);
             turn++;
+        }
+        if (c == ' ')
+        {
+            putBomb(tabs, p1->x, p1->y);
+            mvwprintw(displays->window, 0, 0, "bomb");
         }
     }
     mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");

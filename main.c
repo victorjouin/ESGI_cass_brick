@@ -7,7 +7,7 @@ typedef struct win win;
 void main(int *argc, char **argv)
 {
     // initialise la fenetre de jeu
-    printf("mettez le terminal en prenne écran si vous avez des probleme de segfault au demarrage\n\n");
+    printf("mettez le terminal en pleinne écran si vous avez des probleme de segfault au demarrage\n\n");
     initscr();
     curs_set(false);
     refresh();
