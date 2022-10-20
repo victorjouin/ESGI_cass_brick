@@ -60,9 +60,8 @@ void main(int *argc, char **argv)
         win = play->victory = winCheck(tabs);
         movePlayer2(p2, tabs, displays);
         movePlayer(p1, tabs, displays);
-        randFallout(tabs);
     }
-    wgetch(displays->window);
+    winner(displays, play);
     endwin();
     freeStock(tabs, displays);
 }

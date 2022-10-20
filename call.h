@@ -57,4 +57,5 @@ void bombChecker(tab *tabs);
 void bombExplosion(tab *tabs, int x, int y);
 int winCheck(tab *tabs);
 void randFallout(tab *tabs);
+void winner(win *displays, game *play);
 #endif

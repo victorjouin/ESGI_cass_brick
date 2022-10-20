@@ -47,6 +47,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
     int checkwin = winCheck(tabs);
     if (checkwin == 0)
     {
+        randFallout(tabs);
         while (turn != 10)
         {
             c = wgetch(displays->window);
@@ -113,6 +114,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
     int checkwin = winCheck(tabs);
     if (checkwin == 0)
     {
+        randFallout(tabs);
         while (turn != 10)
         {
             c = wgetch(displays->window);

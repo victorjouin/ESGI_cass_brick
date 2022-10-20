@@ -39,4 +39,23 @@ char *initMenu(win *displays, char *path)
         wgetch(displays->window);
         initMenu(displays, path);
     }
+    else
+    {
+        initMenu(displays, path);
+    }
+}
+
+void winner(win *displays, game *play)
+{
+    wclear(displays->window);
+    if (play->victory == 1)
+    {
+        mvwprintw(displays->window, 10, 10, "PLAYER 1 'P' WIN ! ! ! GG \nPRESS ANY KEY TO QUITE");
+        wgetch(displays->window);
+    }
+    if (play->victory == 2)
+    {
+        mvwprintw(displays->window, 10, 10, "PLAYER 2 'T' WIN ! ! ! GG \nPRESS ANY KEY TO QUITE");
+        wgetch(displays->window);
+    }
 }
