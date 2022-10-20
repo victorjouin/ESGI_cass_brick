@@ -3,10 +3,12 @@
 
 typedef struct tab tab;
 typedef struct win win;
+typedef struct game game;
 
 void main(int *argc, char **argv)
 {
     // initialise la fenetre de jeu
+    game *play = malloc(sizeof(game));
     printf("mettez le terminal en pleinne écran si vous avez des probleme de segfault au demarrage\n\n");
     initscr();
     curs_set(false);
@@ -52,13 +54,41 @@ void main(int *argc, char **argv)
     player1 *p2 = initplayer2(tabs);
 
     // move
-    int c = wgetch(displays->window);
-    while (c != 'p')
+    int win = 0;
+    while (win == 0)
     {
+        win = play->victory = winCheck(tabs);
         movePlayer2(p2, tabs, displays);
         movePlayer(p1, tabs, displays);
+        randFallout(tabs);
     }
     wgetch(displays->window);
     endwin();
     freeStock(tabs, displays);
+}
+
+int winCheck(tab *tabs)
+{
+    int Palive = 0;
+    int Talive = 0;
+
+    for (int i = 0; i != tabs->y; i++)
+    {
+        for (int j = 0; j != tabs->x; j++)
+        {
+            if (tabs->tableau[i][j] == 'P')
+            {
+                Palive++;
+            }
+            if (tabs->tableau[i][j] == 'T')
+            {
+                Talive++;
+            }
+        }
+    }
+    if (Palive == 0 && Talive != 0)
+        return 2;
+    if (Palive != 0 && Talive == 0)
+        return 1;
+    return 0;
 }

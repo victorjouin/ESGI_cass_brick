@@ -17,7 +17,7 @@ typedef struct player1
 
 typedef struct game
 {
-    int round;
+    int victory;
 } game;
 
 typedef struct bomb
@@ -54,5 +54,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays);
 void movePlayer2(player1 *p2, tab *tabs, win *displays);
 void putBomb(tab *tabs, int x, int y);
 void bombChecker(tab *tabs);
-
+void bombExplosion(tab *tabs, int x, int y);
+int winCheck(tab *tabs);
+void randFallout(tab *tabs);
 #endif

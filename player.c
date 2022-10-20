@@ -44,119 +44,128 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
 {
     int c;
     int turn = 0;
-    while (turn != 10)
+    int checkwin = winCheck(tabs);
+    if (checkwin == 0)
     {
-        c = wgetch(displays->window);
-        if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
+        while (turn != 10)
         {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x) - 1][(p1->y)] = 'P';
-            p1->x -= 1;
+            c = wgetch(displays->window);
+            if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x) - 1][(p1->y)] = 'P';
+                p1->x -= 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
+
+            if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x)][(p1->y) - 1] = 'P';
+                p1->y -= 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
+
+            if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x) + 1][(p1->y)] = 'P';
+                p1->x += 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
+
+            if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x)][(p1->y) + 1] = 'P';
+                p1->y += 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
+            if (c == ' ')
+            {
+                putBomb(tabs, p1->x, p1->y);
+                mvwprintw(displays->window, 0, 0, "bomb");
+                bombChecker(tabs);
+            }
             display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
         }
 
-        if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x)][(p1->y) - 1] = 'P';
-            p1->y -= 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
-
-        if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x) + 1][(p1->y)] = 'P';
-            p1->x += 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
-
-        if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x)][(p1->y) + 1] = 'P';
-            p1->y += 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
-        if (c == ' ')
-        {
-            putBomb(tabs, p1->x, p1->y);
-            mvwprintw(displays->window, 0, 0, "bomb");
-            bombChecker(tabs);
-        }
-        display(tabs, displays);
+        mvwprintw(displays->window, 0, 0, "joueur 1 ton tour est fini a toi joueur 2 !");
     }
-    mvwprintw(displays->window, 0, 0, "joueur 1 ton tour est fini a toi joueur 2 !");
 }
 
 void movePlayer2(player1 *p1, tab *tabs, win *displays)
 {
     int c;
     int turn = 0;
-    while (turn != 10)
+    int checkwin = winCheck(tabs);
+    if (checkwin == 0)
     {
-        c = wgetch(displays->window);
-        if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
+        while (turn != 10)
         {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x) - 1][(p1->y)] = 'T';
-            p1->x -= 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
+            c = wgetch(displays->window);
+            if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x) - 1][(p1->y)] = 'T';
+                p1->x -= 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
 
-        if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x)][(p1->y) - 1] = 'T';
-            p1->y -= 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
+            if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x)][(p1->y) - 1] = 'T';
+                p1->y -= 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
 
-        if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x) + 1][(p1->y)] = 'T';
-            p1->x += 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
-        }
+            if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x) + 1][(p1->y)] = 'T';
+                p1->x += 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
 
-        if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
-        {
-            if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
-                tabs->tableau[(p1->x)][(p1->y)] = ' ';
-            tabs->tableau[(p1->x)][(p1->y) + 1] = 'T';
-            p1->y += 1;
-            display(tabs, displays);
-            turn++;
-            bombChecker(tabs);
+            if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
+            {
+                if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
+                    tabs->tableau[(p1->x)][(p1->y)] = ' ';
+                tabs->tableau[(p1->x)][(p1->y) + 1] = 'T';
+                p1->y += 1;
+                display(tabs, displays);
+                turn++;
+                bombChecker(tabs);
+            }
+            if (c == ' ')
+            {
+                putBomb(tabs, p1->x, p1->y);
+                mvwprintw(displays->window, 0, 0, "bomb");
+                bombChecker(tabs);
+            }
         }
-        if (c == ' ')
-        {
-            putBomb(tabs, p1->x, p1->y);
-            mvwprintw(displays->window, 0, 0, "bomb");
-            bombChecker(tabs);
-        }
+        mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");
     }
-    mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");
 }
