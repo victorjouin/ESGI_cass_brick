@@ -2,6 +2,7 @@
 
 typedef struct player1 player1;
 typedef struct tab tab;
+typedef struct bonus bonus;
 
 player1 *initplayer1(tab *tabs)
 {
@@ -40,7 +41,7 @@ player1 *initplayer2(tab *tabs)
     return p2;
 }
 
-void movePlayer(player1 *p1, tab *tabs, win *displays)
+void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
 {
     int c;
     int turn = 0;
@@ -59,7 +60,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
                 p1->x -= 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
@@ -70,7 +71,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
                 p1->y -= 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -81,7 +82,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
                 p1->x += 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
@@ -92,13 +93,12 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
                 p1->y += 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
             if (c == ' ')
             {
                 putBomb(tabs, p1->x, p1->y);
-                mvwprintw(displays->window, 0, 0, "bomb");
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
             display(tabs, displays);
         }
@@ -107,7 +107,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays)
     }
 }
 
-void movePlayer2(player1 *p1, tab *tabs, win *displays)
+void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
 {
     int c;
     int turn = 0;
@@ -126,7 +126,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
                 p1->x -= 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ')
@@ -137,7 +137,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
                 p1->y -= 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -148,7 +148,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
                 p1->x += 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
 
             if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ')
@@ -159,13 +159,12 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays)
                 p1->y += 1;
                 display(tabs, displays);
                 turn++;
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
             if (c == ' ')
             {
                 putBomb(tabs, p1->x, p1->y);
-                mvwprintw(displays->window, 0, 0, "bomb");
-                bombChecker(tabs);
+                bombChecker(tabs, b1);
             }
         }
         mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");

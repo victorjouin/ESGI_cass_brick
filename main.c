@@ -4,6 +4,7 @@
 typedef struct tab tab;
 typedef struct win win;
 typedef struct game game;
+typedef struct bonus bonus;
 
 void main(int *argc, char **argv)
 {
@@ -52,14 +53,17 @@ void main(int *argc, char **argv)
 
     player1 *p1 = initplayer1(tabs);
     player1 *p2 = initplayer2(tabs);
-
+    bonus *b1 = malloc(sizeof(bonus));
+    b1->power = 4;
+    bonus *b2 = malloc(sizeof(bonus));
+    b2->power = 4;
     // move
     int win = 0;
     while (win == 0)
     {
         win = play->victory = winCheck(tabs);
-        movePlayer2(p2, tabs, displays);
-        movePlayer(p1, tabs, displays);
+        movePlayer2(p2, tabs, displays, b2);
+        movePlayer(p1, tabs, displays, b1);
     }
     winner(displays, play);
     endwin();

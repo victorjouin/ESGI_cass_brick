@@ -1,4 +1,4 @@
-map1                               
+map                                
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 H  P                              H
 HMMM MMMMMMMMMMMMMMMMMMMMMMMMM MMMH

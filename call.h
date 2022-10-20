@@ -15,6 +15,12 @@ typedef struct player1
     int live;
 } player1;
 
+typedef struct bonus
+{
+    int power;
+    int nbr_bmb;
+} bonus;
+
 typedef struct game
 {
     int victory;
@@ -50,11 +56,11 @@ void freeStock(tab *tabs, win *win);
 WINDOW *create_newwin(int height, int width, int start_y, int start_x);
 player1 *initplayer1(tab *tabs);
 player1 *initplayer2(tab *tabs);
-void movePlayer(player1 *p1, tab *tabs, win *displays);
-void movePlayer2(player1 *p2, tab *tabs, win *displays);
+void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1);
+void movePlayer2(player1 *p2, tab *tabs, win *displays, bonus *b2);
 void putBomb(tab *tabs, int x, int y);
-void bombChecker(tab *tabs);
-void bombExplosion(tab *tabs, int x, int y);
+void bombChecker(tab *tabs, bonus *b1);
+void bombExplosion(tab *tabs, bonus *b1, int x, int y);
 int winCheck(tab *tabs);
 void randFallout(tab *tabs);
 void winner(win *displays, game *play);

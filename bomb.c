@@ -9,7 +9,7 @@ void putBomb(tab *tabs, int x, int y)
     tabs->tableau[x][y] = '5';
 }
 
-void bombChecker(tab *tabs)
+void bombChecker(tab *tabs, bonus *b1)
 {
     for (int i = 0; i != tabs->y; i++)
     {
@@ -19,20 +19,25 @@ void bombChecker(tab *tabs)
                 tabs->tableau[i][j]--;
             if (tabs->tableau[i][j] == '0')
             {
-                bombExplosion(tabs, i, j);
+                bombExplosion(tabs, b1, i, j);
             }
         }
     }
 }
 
-void bombExplosion(tab *tabs, int x, int y)
+void bombExplosion(tab *tabs, bonus *b1, int x, int y)
 {
     tabs->tableau[x][y] = 'X';
-    for (int i = 0; i != 2; i++)
+    for (int i = 0; i != b1->power; i++)
     {
         if (tabs->tableau[x][y + i] == 'M')
         {
             tabs->tableau[x][y + i] = ' ';
+            break;
+        }
+        if (tabs->tableau[x][y + i] >= '1' && tabs->tableau[x][y + i] <= '5')
+        {
+            tabs->tableau[x][y + i] = '0';
             break;
         }
         if (tabs->tableau[x][y + i] == 'H')
@@ -43,26 +48,39 @@ void bombExplosion(tab *tabs, int x, int y)
         tabs->tableau[x][y + i] = 'X';
     }
 
-    for (int i = 0; i != 2; i++)
+    for (int i = 0; i != b1->power; i++)
     {
-        if (tabs->tableau[x][y - i] == 'M')
+        if (y - i > 0)
         {
-            tabs->tableau[x][y - i] = ' ';
-            break;
+            if (tabs->tableau[x][y - i] == 'M')
+            {
+                tabs->tableau[x][y - i] = ' ';
+                break;
+            }
+            if (tabs->tableau[x][y - i] >= '1' && tabs->tableau[x][y - i] <= '5')
+            {
+                tabs->tableau[x][y - i] = '0';
+                break;
+            }
+            if (tabs->tableau[x][y - i] == 'H')
+            {
+                tabs->tableau[x][y - i] = 'H';
+                break;
+            }
+            tabs->tableau[x][y - i] = 'X';
         }
-        if (tabs->tableau[x][y - i] == 'H')
-        {
-            tabs->tableau[x][y - i] = 'H';
-            break;
-        }
-        tabs->tableau[x][y - i] = 'X';
     }
 
-    for (int i = 0; i != 2; i++)
+    for (int i = 0; i != b1->power; i++)
     {
         if (tabs->tableau[x + i][y] == 'M')
         {
             tabs->tableau[x + i][y] = ' ';
+            break;
+        }
+        if (tabs->tableau[x + i][y] >= '1' && tabs->tableau[x + i][y] <= '5')
+        {
+            tabs->tableau[x + i][y] = '0';
             break;
         }
         if (tabs->tableau[x + i][y] == 'H')
@@ -73,13 +91,18 @@ void bombExplosion(tab *tabs, int x, int y)
         tabs->tableau[x + i][y] = 'X';
     }
 
-    for (int i = 0; i != 2; i++)
+    for (int i = 0; i != b1->power; i++)
     {
         if (x - i > 0)
         {
             if (tabs->tableau[x - i][y] == 'M')
             {
                 tabs->tableau[x - i][y] = ' ';
+                break;
+            }
+            if (tabs->tableau[x - i][y] >= '1' && tabs->tableau[x - i][y] <= '5')
+            {
+                tabs->tableau[x - i][y] = '0';
                 break;
             }
             if (tabs->tableau[x - i][y] == 'H')
