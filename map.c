@@ -24,7 +24,6 @@ void display(tab *tabs, win *win)
     wclear(win->window);
 
     // affichage du tableau
-    int size = ((tabs->x) * (tabs->y));
     char *mapping = malloc(sizeof(char) * ((tabs->x) * (tabs->y)));
     int k = 0;
     for (int i = 0; i != tabs->y; i++)
