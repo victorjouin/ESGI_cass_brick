@@ -55,11 +55,10 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
             if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
             {
                 if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                {
                     tabs->tableau[(p1->x)][(p1->y)] = ' ';
-                    tabs->tableau[(p1->x) - 1][(p1->y)] = 'P';
-                    p1->x -= 1;
-                }
+                tabs->tableau[(p1->x) - 1][(p1->y)] = 'P';
+                p1->x -= 1;
+
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
@@ -87,11 +86,10 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
             if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
             {
                 if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
-                {
                     tabs->tableau[(p1->x)][(p1->y)] = ' ';
-                    tabs->tableau[(p1->x) + 1][(p1->y)] = 'P';
-                    p1->x += 1;
-                }
+                tabs->tableau[(p1->x) + 1][(p1->y)] = 'P';
+                p1->x += 1;
+
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
@@ -101,7 +99,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
             {
                 if (tabs->tableau[(p1->x)][(p1->y)] == 'P')
                     tabs->tableau[(p1->x)][(p1->y)] = ' ';
-                if (p1->y == tabs->x)
+                if (p1->y >= tabs->x - 1)
                 {
                     tabs->tableau[(p1->x)][2] = 'P';
                     p1->y = 2;
@@ -115,6 +113,12 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+            }
+            if (c == 'p')
+            {
+                display(tabs, displays);
+                bombChecker(tabs, b1);
+                turn++;
             }
             if (c == ' ')
             {
@@ -184,7 +188,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
             {
                 if (tabs->tableau[(p1->x)][(p1->y)] == 'T')
                     tabs->tableau[(p1->x)][(p1->y)] = ' ';
-                if (p1->y == tabs->x)
+                if (p1->y >= tabs->x - 1)
                 {
                     tabs->tableau[(p1->x)][2] = 'T';
                     p1->y = 2;
@@ -198,6 +202,12 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+            }
+            if (c == 'p')
+            {
+                display(tabs, displays);
+                bombChecker(tabs, b1);
+                turn++;
             }
             if (c == ' ')
             {

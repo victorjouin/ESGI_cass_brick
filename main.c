@@ -15,8 +15,8 @@ void main(int *argc, char **argv)
     curs_set(false);
     refresh();
     win *displays = malloc(sizeof(win));
-    displays->h = 50;
-    displays->w = 70;
+    displays->h = 60;
+    displays->w = 90;
     displays->window = create_newwin(displays->h, displays->w, (LINES - displays->h) / 2, (COLS - displays->w) / 2);
     keypad(displays->window, true);
     // gestion menu

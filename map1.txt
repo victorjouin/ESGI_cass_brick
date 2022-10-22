@@ -1,13 +1,13 @@
 map                                
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-H  P                              H
-HMMM MMMMMMMMMMMMMMMMMMMMMMMMM MMMH
+H                                 H
+HMMMPMMMMMMMMMMMMMMMMMMMMMMMMM MMMH
 H  M     M               M     M  H
 H  M     MMMMMMMMMMMMMMMMM     M  H
 H              MMMMM              H
 H              MMMMM              H
 H  M     MMMMMMMMMMMMMMMMM     M  H
 H  M     M               M     M  H
-HMMM MMMMMMMMMMMMMMMMMMMMMMMMM MMMH
-H                              T  H
+HMMM MMMMMMMMMMMMMMMMMMMMMMMMMTMMMH
+H                                 H
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
