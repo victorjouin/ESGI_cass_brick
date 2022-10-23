@@ -45,6 +45,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
 {
     int c;
     int turn = 0;
+    int nbrBomb = b1->nbr_bmb;
     int checkwin = winCheck(tabs);
     if (checkwin == 0)
     {
@@ -62,6 +63,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
 
             if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ' || p1->y - 1 <= 0)
@@ -81,6 +83,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
 
             if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -93,6 +96,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
 
             if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ' || p1->y == tabs->x)
@@ -113,22 +117,23 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
             if (c == 'p')
             {
                 display(tabs, displays);
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
                 turn++;
             }
             if (c == ' ')
             {
                 putBomb(tabs, p1->x, p1->y);
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
-            display(tabs, displays);
         }
-
-        mvwprintw(displays->window, 0, 0, "joueur 1 ton tour est fini a toi joueur 2 ! y= %d", p1->y);
+        mvwprintw(displays->window, 0, 0, "A toi joueur 2 ! y= %d", p1->y);
     }
 }
 
@@ -136,6 +141,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
 {
     int c;
     int turn = 0;
+    int nbrBomb = b1->nbr_bmb;
     int checkwin = winCheck(tabs);
     if (checkwin == 0)
     {
@@ -152,6 +158,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
             }
 
             if (c == 'q' && tabs->tableau[(p1->x)][(p1->y) - 1] == ' ' || p1->y - 1 <= 0)
@@ -171,6 +178,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
             }
 
             if (c == 's' && tabs->tableau[(p1->x) + 1][(p1->y)] == ' ')
@@ -182,6 +190,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
             }
 
             if (c == 'd' && tabs->tableau[(p1->x)][(p1->y) + 1] == ' ' || p1->y == tabs->x)
@@ -202,20 +211,23 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 display(tabs, displays);
                 turn++;
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
             }
             if (c == 'p')
             {
                 display(tabs, displays);
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
                 turn++;
             }
-            if (c == ' ')
+            if (c == ' ' && nbrBomb != 0)
             {
                 putBomb(tabs, p1->x, p1->y);
                 bombChecker(tabs, b1);
+                interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
+                nbrBomb--;
             }
         }
-        mvwprintw(displays->window, 0, 0, "PASSE x=%d y=%d", p1->x, p1->y);
-        mvwprintw(displays->window, 0, 0, "joueur 2 ton tour est fini a toi joueur 1 !");
+        mvwprintw(displays->window, 0, 0, "A toi joueur 1 !");
     }
 }

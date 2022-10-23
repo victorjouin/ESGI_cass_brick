@@ -19,6 +19,7 @@ typedef struct bonus
 {
     int power;
     int nbr_bmb;
+    int turn;
 } bonus;
 
 typedef struct game
@@ -64,4 +65,5 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y);
 int winCheck(tab *tabs);
 void randFallout(tab *tabs);
 void winner(win *displays, game *play);
+void interfaceGame(win *displays, bonus *b1, tab *tabs, int turn, int player, int nbrBomb);
 #endif

@@ -16,7 +16,7 @@ void main(int *argc, char **argv)
     refresh();
     win *displays = malloc(sizeof(win));
     displays->h = 60;
-    displays->w = 90;
+    displays->w = 100;
     displays->window = create_newwin(displays->h, displays->w, (LINES - displays->h) / 2, (COLS - displays->w) / 2);
     keypad(displays->window, true);
     // gestion menu
@@ -54,8 +54,12 @@ void main(int *argc, char **argv)
     player1 *p2 = initplayer2(tabs);
     bonus *b1 = malloc(sizeof(bonus));
     b1->power = 5;
+    b1->turn = 10;
+    b1->nbr_bmb = 1;
     bonus *b2 = malloc(sizeof(bonus));
     b2->power = 5;
+    b2->turn = 10;
+    b2->nbr_bmb = 1;
     // move
     int win = 0;
     while (win == 0)

@@ -63,3 +63,22 @@ void winner(win *displays, game *play)
         wgetch(displays->window);
     }
 }
+void interfaceGame(win *displays, bonus *b1, tab *tabs, int turn, int player, int bomb)
+{
+    if (player == 1)
+    {
+        mvwprintw(displays->window, 0, tabs->x + 5, "tour du joueur 1");
+        mvwprintw(displays->window, 2, tabs->x + 5, "tour effectué [%d / %d]", turn, b1->turn);
+        mvwprintw(displays->window, 4, tabs->x + 5, "Info bonus:");
+        mvwprintw(displays->window, 6, tabs->x + 5, "puissance: %d ", b1->power);
+        mvwprintw(displays->window, 8, tabs->x + 5, "nombre bomb: %d ", bomb);
+    }
+    if (player == 2)
+    {
+        mvwprintw(displays->window, 0, tabs->x + 5, "tour du joueur 2");
+        mvwprintw(displays->window, 2, tabs->x + 5, "tour effectué [%d / %d]", turn, b1->turn);
+        mvwprintw(displays->window, 4, tabs->x + 5, "Info bonus:");
+        mvwprintw(displays->window, 6, tabs->x + 5, "puissance: %d ", b1->power);
+        mvwprintw(displays->window, 8, tabs->x + 5, "nombre bomb: %d ", bomb);
+    }
+}
