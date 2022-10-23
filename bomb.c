@@ -33,7 +33,7 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
         bonusHandler(tabs, b1, x, (y + i));
         if (tabs->tableau[x][y + i] == 'M')
         {
-            if (rand() % 5 == 1)
+            if (rand() % 4 == 1)
             {
                 bonusGenerator(x, (y + i), tabs);
                 break;
@@ -64,7 +64,7 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
             bonusHandler(tabs, b1, x, (y - i));
             if (tabs->tableau[x][y - i] == 'M')
             {
-                if (rand() % 5 == 1)
+                if (rand() % 4 == 1)
                 {
                     bonusGenerator(x, (y - i), tabs);
                     break;
@@ -94,7 +94,7 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
         bonusHandler(tabs, b1, (x + i), y);
         if (tabs->tableau[x + i][y] == 'M')
         {
-            if (rand() % 5 == 1)
+            if (rand() % 4 == 1)
             {
                 bonusGenerator((x + i), y, tabs);
                 break;
@@ -125,7 +125,7 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
             bonusHandler(tabs, b1, (x - 1), y);
             if (tabs->tableau[x - i][y] == 'M')
             {
-                if (rand() % 5 == 1)
+                if (rand() % 4 == 1)
                 {
                     bonusGenerator((x - i), y, tabs);
                     break;
