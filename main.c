@@ -53,7 +53,7 @@ void main(int *argc, char **argv)
     player1 *p1 = initplayer1(tabs);
     player1 *p2 = initplayer2(tabs);
     bonus *b1 = malloc(sizeof(bonus));
-    b1->power = 5;
+    b1->power = 20;
     b1->turn = 10;
     b1->nbr_bmb = 1;
     bonus *b2 = malloc(sizeof(bonus));

@@ -50,7 +50,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
     if (checkwin == 0)
     {
         randFallout(tabs);
-        while (turn != 10)
+        while (turn != b1->turn)
         {
             c = wgetch(displays->window);
             if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')
@@ -126,8 +126,9 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
                 interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
                 turn++;
             }
-            if (c == ' ')
+            if (c == ' ' && nbrBomb != 0)
             {
+                nbrBomb--;
                 putBomb(tabs, p1->x, p1->y);
                 bombChecker(tabs, b1);
                 interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
@@ -146,7 +147,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
     if (checkwin == 0)
     {
         randFallout(tabs);
-        while (turn != 10)
+        while (turn != b1->turn)
         {
             c = wgetch(displays->window);
             if (c == 'z' && tabs->tableau[(p1->x) - 1][(p1->y)] == ' ')

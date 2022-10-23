@@ -3,11 +3,11 @@ SRC =	main.c		\
 		player.c	\
 		map.c		\
 		menu.c		\
-		bomb.c
+		bomb.c		\
+		bonus.c
 
 
 OBJ	=	$(SRC:.c=.o)
-
 
 LDFLAGS= -lncurses
 

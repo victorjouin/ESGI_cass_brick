@@ -66,4 +66,6 @@ int winCheck(tab *tabs);
 void randFallout(tab *tabs);
 void winner(win *displays, game *play);
 void interfaceGame(win *displays, bonus *b1, tab *tabs, int turn, int player, int nbrBomb);
+void bonusGenerator(int x, int y, tab *tabs);
+void bonusHandler(tab *tabs, bonus *b1, int x, int y);
 #endif

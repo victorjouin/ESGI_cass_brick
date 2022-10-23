@@ -30,9 +30,13 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
     tabs->tableau[x][y] = 'X';
     for (int i = 0; i != b1->power; i++)
     {
+        bonusHandler(tabs, b1, x, (y + i));
         if (tabs->tableau[x][y + i] == 'M')
         {
-            tabs->tableau[x][y + i] = ' ';
+            if (rand() % 5 == 1)
+                bonusGenerator(x, (y + i), tabs);
+            else
+                tabs->tableau[x][y + i] = ' '; // bonus
             break;
         }
         if (tabs->tableau[x][y + i] >= '1' && tabs->tableau[x][y + i] <= '5')
@@ -52,9 +56,13 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
     {
         if (y - i > 0)
         {
+            bonusHandler(tabs, b1, x, (y - i));
             if (tabs->tableau[x][y - i] == 'M')
             {
-                tabs->tableau[x][y - i] = ' ';
+                if (rand() % 5 == 1)
+                    bonusGenerator(x, (y - i), tabs);
+                else
+                    tabs->tableau[x][y - i] = ' '; // bonus
                 break;
             }
             if (tabs->tableau[x][y - i] >= '1' && tabs->tableau[x][y - i] <= '5')
@@ -73,9 +81,13 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
 
     for (int i = 0; i != b1->power; i++)
     {
+        bonusHandler(tabs, b1, (x + i), y);
         if (tabs->tableau[x + i][y] == 'M')
         {
-            tabs->tableau[x + i][y] = ' ';
+            if (rand() % 5 == 1)
+                bonusGenerator((x + i), y, tabs);
+            else
+                tabs->tableau[x + i][y] = ' ';
             break;
         }
         if (tabs->tableau[x + i][y] >= '1' && tabs->tableau[x + i][y] <= '5')
@@ -95,9 +107,14 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
     {
         if (x - i > 0)
         {
+            bonusHandler(tabs, b1, (x - 1), y);
+
             if (tabs->tableau[x - i][y] == 'M')
             {
-                tabs->tableau[x - i][y] = ' ';
+                if (rand() % 5 == 1)
+                    bonusGenerator((x - i), y, tabs);
+                else
+                    tabs->tableau[x - i][y] = ' ';
                 break;
             }
             if (tabs->tableau[x - i][y] >= '1' && tabs->tableau[x - i][y] <= '5')
