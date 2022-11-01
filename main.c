@@ -56,10 +56,12 @@ void main(int *argc, char **argv)
     b1->power = 2;
     b1->turn = 10;
     b1->nbr_bmb = 1;
+    b1->countdown = '5';
     bonus *b2 = malloc(sizeof(bonus));
     b2->power = 2;
     b2->turn = 10;
     b2->nbr_bmb = 1;
+    b2->countdown = '5';
     // move
     int win = 0;
     while (win == 0)
@@ -71,6 +73,7 @@ void main(int *argc, char **argv)
     winner(displays, play);
     endwin();
     freeStock(tabs, displays);
+    freeplayer(p1, p2, b1, b2);
 }
 
 int winCheck(tab *tabs)

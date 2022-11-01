@@ -72,6 +72,7 @@ void interfaceGame(win *displays, bonus *b1, tab *tabs, int turn, int player, in
         mvwprintw(displays->window, 4, tabs->x + 5, "Info bonus:");
         mvwprintw(displays->window, 6, tabs->x + 5, "puissance: %d ", b1->power);
         mvwprintw(displays->window, 8, tabs->x + 5, "nombre bomb: %d ", bomb);
+        mvwprintw(displays->window, 10, tabs->x + 5, "minteur bomb: %c ", b1->countdown);
     }
     if (player == 2)
     {
@@ -80,5 +81,6 @@ void interfaceGame(win *displays, bonus *b1, tab *tabs, int turn, int player, in
         mvwprintw(displays->window, 4, tabs->x + 5, "Info bonus:");
         mvwprintw(displays->window, 6, tabs->x + 5, "puissance: %d ", b1->power);
         mvwprintw(displays->window, 8, tabs->x + 5, "nombre bomb: %d ", bomb);
+        mvwprintw(displays->window, 10, tabs->x + 5, "minteur bomb: %c ", b1->countdown);
     }
 }

@@ -17,6 +17,13 @@ void freeStock(tab *tabs, win *win)
     free(tabs->tableau);
     free(tabs);
 }
+void freeplayer(player1 *p1, player1 *p2, bonus *b1, bonus *b2)
+{
+    free(p1);
+    free(p2);
+    free(b1);
+    free(b2);
+}
 
 void display(tab *tabs, win *win)
 {

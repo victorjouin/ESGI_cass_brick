@@ -129,7 +129,7 @@ void movePlayer(player1 *p1, tab *tabs, win *displays, bonus *b1)
             if (c == ' ' && nbrBomb != 0)
             {
                 nbrBomb--;
-                putBomb(tabs, p1->x, p1->y);
+                putBomb(tabs, p1->x, p1->y, b1);
                 bombChecker(tabs, b1);
                 interfaceGame(displays, b1, tabs, turn, 1, nbrBomb);
             }
@@ -223,7 +223,7 @@ void movePlayer2(player1 *p1, tab *tabs, win *displays, bonus *b1)
             }
             if (c == ' ' && nbrBomb != 0)
             {
-                putBomb(tabs, p1->x, p1->y);
+                putBomb(tabs, p1->x, p1->y, b1);
                 bombChecker(tabs, b1);
                 interfaceGame(displays, b1, tabs, turn, 2, nbrBomb);
                 nbrBomb--;
