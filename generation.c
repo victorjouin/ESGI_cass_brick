@@ -14,7 +14,7 @@ tab *generationMap(win *displays)
     {
         height *= 2;
     }
-    if (width < 10)
+    if (width < 12)
     {
         width *= 2;
     }
