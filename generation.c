@@ -10,19 +10,19 @@ tab *generationMap(win *displays)
     tab *tabs = malloc(sizeof(tab));
     int width = rand() % 60;
     int height = rand() % 30;
-    if (height < 8)
+    if (height <= 10)
     {
         height *= 2;
     }
-    if (width < 12)
+    if (width <= 14)
     {
         width *= 2;
     }
-    if (height % 2 == 0)
+    if (height % 2 == 1)
     {
         height += 1;
     }
-    if (width % 2 == 0)
+    if (width % 2 == 1)
     {
         width += 1;
     }
