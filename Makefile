@@ -4,7 +4,8 @@ SRC =	main.c		\
 		map.c		\
 		menu.c		\
 		bomb.c		\
-		bonus.c
+		bonus.c		\
+		generation.c
 
 
 OBJ	=	$(SRC:.c=.o)

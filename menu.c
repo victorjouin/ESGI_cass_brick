@@ -10,7 +10,7 @@ char *initMenu(win *displays, char *path)
     if (c == 'y')
     {
         wclear(displays->window);
-        mvwprintw(displays->window, 10, 10, "Selectionnez une map !\n\n map1 PRESS '1'\n\n map2 PRESS '2'\n\n map3 PRESS '3'\n\n map3 PRESS '4'");
+        mvwprintw(displays->window, 10, 10, "Selectionnez une map !\n\n map1 PRESS '1'\n\n map2 PRESS '2'\n\n map3 PRESS '3'\n\n map3 PRESS '4' \n\n generate a map PRESS '5'");
         c = wgetch(displays->window);
         if (c == '1')
         {
@@ -27,6 +27,10 @@ char *initMenu(win *displays, char *path)
         if (c == '4')
         {
             return ("map4.txt");
+        }
+        if (c == '5')
+        {
+            return ("generate");
         }
     }
     if (c == 'm')

@@ -8,13 +8,13 @@ player1 *initplayer1(tab *tabs)
 {
     // find player 'P'
     player1 *p1 = malloc(sizeof(player1));
-    tabs->tableau;
     for (int i = 0; i != tabs->y; i++)
     {
         for (int j = 0; j != tabs->x; j++)
         {
             if (tabs->tableau[i][j] == 'P')
             {
+
                 p1->x = i;
                 p1->y = j;
             }
@@ -26,13 +26,13 @@ player1 *initplayer2(tab *tabs)
 {
     // find player 'T'
     player1 *p2 = malloc(sizeof(player1));
-    tabs->tableau;
     for (int i = 0; i != tabs->y; i++)
     {
         for (int j = 0; j != tabs->x; j++)
         {
             if (tabs->tableau[i][j] == 'T')
             {
+
                 p2->x = i;
                 p2->y = j;
             }

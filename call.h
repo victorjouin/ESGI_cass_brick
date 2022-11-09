@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 
 #ifndef POP_H
 #define POP_H
@@ -52,6 +53,8 @@ typedef struct win
 
 } win;
 
+tab *generationMap(win *displays);
+tab *mapFill(tab *tabs, win *displays);
 char *initMenu(win *displays, char *arg);
 tab *initTab(int width, int height, char *file);
 void display(tab *tabs, win *win);
