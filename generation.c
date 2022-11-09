@@ -59,7 +59,15 @@ tab *generationMap(win *displays)
     }
     tabs = mapFill(tabs, displays);
     tabs->tableau[3][3] = 'P';
+    tabs->tableau[2][3] = ' ';
+    tabs->tableau[4][3] = ' ';
+    tabs->tableau[3][2] = ' ';
+    tabs->tableau[3][4] = ' ';
     tabs->tableau[tabs->y - 5][tabs->x - 5] = 'T';
+    tabs->tableau[tabs->y - 4][tabs->x - 5] = ' ';
+    tabs->tableau[tabs->y - 6][tabs->x - 5] = ' ';
+    tabs->tableau[tabs->y - 5][tabs->x - 4] = ' ';
+    tabs->tableau[tabs->y - 5][tabs->x - 6] = ' ';
     for (int i = 0; i != tabs->y; i++)
     {
         tabs->tableau[i][0] = ' ';
