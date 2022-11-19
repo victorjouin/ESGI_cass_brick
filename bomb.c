@@ -45,7 +45,7 @@ void bombExplosion(tab *tabs, bonus *b1, int x, int y)
                 break;
             }
         }
-        if (tabs->tableau[x][y + i] >= '1' && tabs->tableau[x][y + i] <= '5')
+        if (tabs->tableau[x][y + i] >= '1' && tabs->tableau[x][y + i] <= '9')
         {
             tabs->tableau[x][y + i] = '0';
             break;

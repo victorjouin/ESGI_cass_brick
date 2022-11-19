@@ -5,7 +5,7 @@ typedef struct tab tab;
 WINDOW *create_newwin(int height, int width, int start_y, int start_x)
 {
     WINDOW *local_win;
-    local_win = newwin(height, width, start_y, start_x);
+    local_win = newwin(height, width, 0, 0);
     wrefresh(local_win);
 
     return local_win;
